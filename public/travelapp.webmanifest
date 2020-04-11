@@ -1,0 +1,16 @@
+{
+    "name": "TourIt",
+    "short_name": "TourIt",
+    "description": "Find popular tourist attractions and find directions to locations all around London!",
+    "icons": [
+        {
+            "src": "logo.jpg",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/home.html",
+    "display": "fullscreen",
+    "theme_color": "#37ab2e",
+    "background_color": "#37ab2e"
+}

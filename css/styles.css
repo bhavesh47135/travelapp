@@ -1,0 +1,104 @@
+body, html {
+	background-color: rgb(55, 171, 46);  /* #ce5d5d;*/
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+@supports(padding:max(0px)) {
+    body, top {
+        padding-left: min(0vmin, env(safe-area-inset-left));
+        padding-right: min(0vmin, env(safe-area-inset-right));
+    }
+}
+
+@font-face {
+	font-family: "Cocogoose";
+	src: url("./Cocogoose Pro Thin-trial.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "Cairo";
+	src: url("./Cairo-Regular.ttf") format("truetype");
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	background-color: rgb(27, 112, 21);
+	border-color: black;
+	position: fixed;
+	width: 100%;
+	height: 8%;
+	top: 0;
+	left: 0;
+	right: 0;
+    float: left;
+	padding-top: env(safe-area-inset-top);
+	z-index: 99;
+}
+
+.logo {
+	font-family: "Cocogoose", sans-serif;
+	color: white;
+	margin: auto;
+	width: 100%;
+	text-align: center;
+	font-size: 2em;
+}
+
+.wrapper {
+	height: 12%;
+	padding-top: env(safe-area-inset-top);
+}
+
+.heading {
+	font-family: "Cairo", sans-serif;
+	padding-left: 5%;
+	padding-bottom: 10%;
+	font-size: 20px;
+	color: white;
+}
+
+/*.skyline {
+    position:fixed;
+    bottom:0px;
+    left:0px;
+}
+
+.attractions-list {
+	width: 100%;
+	height: 90%;
+}
+
+.attractions-list ul {
+    padding: 0.2em;
+	list-style-type: none;
+}
+
+.attractions-list li {
+	line-height: 1.4em;
+	margin-left: 1em;
+}
+
+.attractions-list img {
+	float: right;
+	width: 30%;
+	min-width: 80px;
+	max-width: 160px;
+	padding-bottom: 1em;
+}
+
+article {
+	border-top: 0.1em solid #acabab;
+	padding: 1em;
+}
+
+article img[data-src] {
+	filter: blur(0.2em);
+}
+
+article img {
+	filter: blur(0em);
+	transition: filter 0.5s;
+}*/

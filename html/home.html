@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title> TourIt </title>
+        <meta charset="UTF-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, 
+            maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <meta name="description" content="Find directions to anywhere in London and discover some of what London has to offer!">
+        <meta name="theme-color" content="#37ab2e">
+        <link rel="stylesheet" type="text/css" href="/styles.css">
+        <link rel="stylesheet" type="text/css" href="/home.css">
+        <link rel="manifest" href="/travelapp.webmanifest">
+        <link rel="apple-touch-icon" href="/logo.jpg">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+
+    <body>
+
+        <div class="top">
+            <img class="nav-icon" src="backicon.png" alt="Back" width="10%" height="auto" onclick="history.back()">
+            <span class="logo" onclick="javascript:location.href='home'">TourIT</span>
+            <img class="nav-icon" src="forwardicon.png" alt="Forward" width="10%" height="auto" onclick="history.forward()">
+        </div>
+
+        <div class="wrapper"></div>
+
+        <div class="journeyPlanner">
+
+            <div class="boxtitle">
+                <span>JOURNEY PLANNER</span>
+            </div>
+
+            <form class="journey">
+                <input type="text" placeholder="From">
+                <input type="text" placeholder="To">
+                <input type="submit" value="Search">
+            </form>
+            
+        </div>
+
+        <div class="statusList">
+
+            <div class="boxtitle">
+                <span>LINE STATUS</span>
+            </div>
+
+            <div class="lineContent">
+
+                <div id="content">
+                    <div id='Bakerloo' class='trainLines'>
+                        <img class='lineIcon' src='/bakerlooicon.png'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Bakerloo</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Central' class='trainLines'>
+                        <img class='lineIcon' src='/centralicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Central</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Circle' class='trainLines'>
+                        <img class='lineIcon' src='/circleicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Circle</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='District' class='trainLines'>
+                        <img class='lineIcon' src='/districticon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>District</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Hammersmith & City' class='trainLines'>
+                        <img class='lineIcon' src='/hammersmith-cityicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Hammersmith & City</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Jubilee' class='trainLines'>
+                        <img class='lineIcon' src='/jubileeicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Jubilee</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Metropolitan' class='trainLines'>
+                        <img class='lineIcon' src='/metropolitanicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Metropolitan</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Northern' class='trainLines'>
+                        <img class='lineIcon' src='/northernicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Northern</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Piccadilly' class='trainLines'>
+                        <img class='lineIcon' src='/piccadillyicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Piccadilly</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Victoria' class='trainLines'>
+                        <img class='lineIcon' src='/victoriaicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Victoria</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                    <div id='Waterloo & City' class='trainLines'>
+                        <img class='lineIcon' src='/waterloo-cityicon.jpg'>
+                        <div class='lineInfo'>
+                            <span class='lineName'>Waterloo & City</span>
+                            <span id='statusNAME'>Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="javascript:location.href='more-lines'" class="moreLines">
+                    <span id="moreLinesText">More Lines</span>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div class="maps">
+
+            <div class="boxtitle">
+                <span>MAPS</span>
+            </div>
+
+            <div class="mapscontent">
+
+                <div class="tubemap">
+                    <span onclick="javascript:location.href='maps-tube-map'">Tube</span>
+                    <img src="/tubemapicon.jpg" onclick="javascript:location.href='maps-tube-map'" 
+                    alt="" width="100%" height="auto">
+                </div>
+
+                <div class="tuberailmap">
+                    <span onclick="javascript:location.href='maps-tube-rail-map'">Tube and Rail</span>
+                    <img src="/tuberailmapicon.jpg" onclick="javascript:location.href='maps-tube-rail-map'" 
+                    alt="" width="100%" height="auto">
+                </div>
+
+                <div class="nighttubemap">
+                    <span onclick="javascript:location.href='maps-night-tube-map'">Night Tube</span>
+                    <img src="/nighttubemapicon.jpg" onclick="javascript:location.href='maps-night-tube-map'" 
+                    alt="" width="100%" height="auto">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="attractions">
+
+            <div class="boxtitle">
+                <span>ATTRACTIONS</span>
+            </div>
+
+            <div class="attractionsList">
+
+                <div onclick="javascript:location.href='more-attractions'" class="moreAttractions">
+                    <span id="moreLinesText">More Attractions</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="home.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,165 @@
+::placeholder {
+	color: rgb(27, 112, 21);
+	font-size: 5vw;
+}
+
+.journeyPlanner {
+	box-sizing : border-box;
+	width: 70vw;
+	height: 300px;
+	margin-left: 15vw;
+	margin-bottom: 20px;
+	background-color: white;
+	border-radius: 10px;
+	-webkit-appearance: none;
+	font-family: "Cairo", sans-serif;
+}
+
+.journey {
+	box-sizing : border-box;
+	margin-top: 10px;
+}
+
+input[type=text] {
+	box-sizing : border-box;
+	border-radius: 20;
+	width: 60vw;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 5vw;
+}
+
+input[type=submit] {
+	box-sizing : border-box;
+	width: 30vw;
+	height: 20px;
+	margin-top: 10px;
+	margin-left: 20vw;
+	color: black;
+	-webkit-appearance: none;
+}
+
+.statusList {
+	font-family: "Cairo", sans-serif;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	margin-left: 15vw;
+	height: 630px;
+	width: 70vw;
+	-webkit-box-direction: normal;
+}
+
+.lineContent {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: white;
+	height: 595px;
+}
+
+.trainLines {
+    width: 70vw;
+    border-bottom: 1px solid grey;
+    height: 50px;
+}
+
+.lineIcon {
+	box-sizing: border-box;
+	display: block;
+	margin-left: 10px;
+	margin-right: 10px;
+    margin-top: 8px;
+    width: 37px;
+    height: auto;
+	float: left;
+	position: relative;
+}
+
+.lineInfo {
+	box-sizing: border-box;
+	text-align: left;
+	padding-top: 10px;
+}
+
+.lineName {
+	display: block;
+	line-height: 10px;
+}
+
+.moreLines {
+	box-sizing: border-box;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+}
+
+.maps {
+	font-family: "Cairo", sans-serif;
+	box-sizing: border-box;
+	padding-left: 15vw;
+	height: 35vh;
+	width: 85vw;
+	-webkit-box-direction: normal;
+}
+
+.mapscontent {
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: white;
+	height: 100%;
+}
+
+.boxtitle {
+	height: 30px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	text-align: center;
+	width: 100%;
+	background-color: rgb(27, 112, 21);
+	color: white;
+	margin: auto;
+	text-align: center;
+	font-size: 1em;
+	font-family: "Cairo", sans-serif;
+}
+
+.tubemap {
+	display: inline-block;
+	padding-top: 1%;
+	width: 40%;
+	text-align: center;
+	padding-left: 5%;
+}
+
+.tuberailmap {
+	padding-top: 1%;
+	width: 40%;
+	text-align: center;
+	float: right;
+	padding-right: 5%;
+}
+
+.nighttubemap {
+	display: inline-block;
+	padding-top: 1%;
+	width: 40%;
+	text-align: center;
+	padding-left: 5%;
+}
+
+.attractions {
+	width: 70vw;
+	margin-left: 15vw;
+	font-family: "Cairo", sans-serif;
+	margin-top: 60px;
+}
+
+.attractionsList {
+	background-color: white;
+}
+
+.moreAttractions {
+	box-sizing: border-box;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+}

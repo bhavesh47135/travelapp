@@ -1,0 +1,27 @@
+#content {
+    margin-top: 5px;
+    margin-left: 10vw;
+    width: 80vw;
+    overflow: auto;
+    border-radius: 10px;
+    font-family: "Cairo", sans-serif;
+}
+
+.statusTitle {
+    color: white;
+}
+
+.statusIcon {
+    margin-top: 5px;
+    height:20px;
+    width: auto;
+}
+
+.statusText {
+    background-color: white;
+    color: black;
+}
+
+.statusDetails {
+    padding-top: 10px;
+}
