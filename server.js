@@ -32,6 +32,14 @@ app.get('/home.html',function(req,res){
     res.sendFile(__dirname+'/html/home.html');
 });
 
+//app.get(/)
+
+app.get('/journey-planner', function(req,res){
+    var start = req.body.start;
+    var end = req.body.end;
+    res.sendFile(__dirname+'/html/journey-planner.html');
+});
+
 app.get('/Bakerloo-status',function(req,res){
     res.sendFile(__dirname+'/html/status/bakerlooStatus.html');
 });
@@ -90,4 +98,8 @@ app.get('/maps-tube-rail-map',function(req,res){
 
 app.get('/maps-night-tube-map',function(req,res){
     res.sendFile(__dirname+'/html/nighttubemap.html');
+});
+
+app.get('/more-attractions',function(req,res){
+    res.sendFile(__dirname+'/html/attractions.html');
 });

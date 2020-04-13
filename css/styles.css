@@ -60,6 +60,58 @@ body, html {
 	color: white;
 }
 
+::placeholder {
+	color: rgb(27, 112, 21);
+	font-size: 13px;
+	padding-left: 10px;
+}
+
+.journeyPlanner {
+	width: 70vw;
+	height: 180px;
+	margin-left: 15vw;
+	margin-bottom: 20px;
+	background-color: white;
+	border-radius: 10px;
+	-webkit-appearance: none;
+	font-family: "Cairo", sans-serif;
+}
+
+.journey {
+	margin-top: 10px;
+}
+
+input[type=text] {
+	border-radius: 10px;
+	width: 60vw;
+	height: 30px;
+	margin-top: 10px;
+	margin-left: 3.5vw;
+}
+
+input[type=submit] {
+	width: 30vw;
+	height: 20px;
+	margin-top: 10px;
+	margin-left: 20vw;
+	color: black;
+	-webkit-appearance: none;
+}
+
+.boxtitle {
+	height: 30px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	text-align: center;
+	width: 100%;
+	background-color: rgb(27, 112, 21);
+	color: white;
+	margin: auto;
+	text-align: center;
+	font-size: 1em;
+	font-family: "Cairo", sans-serif;
+}
+
 /*.skyline {
     position:fixed;
     bottom:0px;
