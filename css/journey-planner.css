@@ -1,0 +1,7 @@
+.results {
+    width: 70vw;
+    margin-left: 15vw;
+    background-color: white;
+    overflow: auto;
+    border-radius: 10px;
+}

@@ -1,15 +1,14 @@
-/*var template = "<div class='journey>\n\
-                    <img class='modeIcon' src='ICON' alt='NAME'>\n\
-                    <span class='modeName'>NAME</span>\n\
-                    <span class='modeInfo'>INFO</span>\n\
-                </div>";
-*/
 var content = "";
 
 var url = window.location.href;
 
-var start = (url.split('=')[1]).split('&')[0];
-var end = url.split('=')[2];
+var a = (url.split('=')[1]).split('&')[0];
+if(a.includes("+")) var start = a.replace("+", " ");
+else var start = a;
+
+var b = url.split('=')[2];
+if(b.includes("+")) var end = b.replace("+", " ");
+else var end = b;
 
 console.log(start);
 console.log(end);
@@ -21,40 +20,73 @@ fetch(query)
 .then((resp) => {
     resp.json().then(
         (text) => {
-            if (text.toLocationDisambiguation != undefined) {
+
+            if (text.toLocationDisambiguation != undefined && text.fromLocationDisambiguation != undefined) {
+                
+                var template = "<div class='journey'>\n\
+                                    <span>Sorry, we couldn't find either of these locations. \n\
+                                    Did you mean any of these?</span>\n\
+                                    <span style='border-bottom: 1px solid grey' class='suggestions'>STARTSUGGESTS</span>\n\
+                                    <span class='suggestions'>ENDSUGGESTS</span>\n\
+                                </div>";
+
+                var startSuggestions = [];
+                for (var i = 0; i < text.fromLocationDisambiguation.disambiguationOptions.length; i++) {
+                    startSuggestions[i] = text.fromLocationDisambiguation.disambiguationOptions[i].place.commonName;
+                }
+
+                var endSuggestions = [];
+                for (var i = 0; i < text.toLocationDisambiguation.disambiguationOptions.length; i++) {
+                    endSuggestions[i] = text.toLocationDisambiguation.disambiguationOptions[i].place.commonName;
+                }
+
+                //var startOptions = "<span class='suggestions'>ENDSUGGESTS</span>";
+
+                var entry = template.replace(/POS/g,(i+1))
+                .replace(/STARTSUGGESTS/g,startSuggestions)
+                .replace(/ENDSUGGESTS/g,endSuggestions)
+                entry = entry.replace('<a href=\'http:///\'></a>','-');
+                content += entry;
+                document.getElementById('content').innerHTML = content;
+
+            }
+
+            else if (text.fromLocationDisambiguation != undefined && text.toLocationDisambiguation == undefined) {
+
+                var heading = "<span class='heading>Sorry, we couldn't find where you're departing from. \n\
+                                Did you mean any of these?</span>"
+                var template = "<div class='journey'>\n\
+                                    <span class='suggestions'>SUGGESTIONS</span>\n\
+                                </div>";
+
+                var suggestions = [];
+                for (var i = 0; i < text.fromLocationDisambiguation.disambiguationOptions.length; i++) {
+                    suggestions[i] = text.fromLocationDisambiguation.disambiguationOptions[i].place.commonName;
+                }
+
+            }
+
+            else if (text.toLocationDisambiguation != undefined && text.fromLocationDisambiguation == undefined) {
+
                 var heading = "<span class='heading>Sorry, we couldn't find where you're headed to. \n\
                                 Did you mean any of these?</span>"
                 var template = "<div class='journey'>\n\
                                     <span class='suggestions'>SUGGESTIONS</span>\n\
                                 </div>";
+
+                var suggestions = [];
+                for (var i = 0; i < text.toLocationDisambiguation.disambiguationOptions.length; i++) {
+                    suggestions[i] = text.toLocationDisambiguation.disambiguationOptions[i].place.commonName;
+                }
+
             }
-            if (text.toLocationDisambiguation != undefined) {
+
+            else if (text.toLocationDisambiguation != undefined) {
                 var template = "<div class='journey>\n\
                                     <img class='modeIcon' src='ICON' alt='NAME'>\n\
                                     <span class='modeName'>NAME</span>\n\
                                     <span class='modeInfo'>INFO</span>\n\
                                 </div>";
             }
-            //console.log(query);
-            //console.log(text);
-
-            if (heading != undefined) {
-                var entry = heading + template.replace(/POS/g,(i+1))
-                .replace(/SUGGESTIONS/g,suggestions[x])
-                entry = entry.replace('<a href=\'http:///\'></a>','-');
-                content += entry;
-                document.getElementById('content').innerHTML = content;
-            } 
-            if (heading == undefined) {
-                var entry = template.replace(/POS/g,(i+1))
-                entry = entry.replace('<a href=\'http:///\'></a>','-');
-                content += entry;
-                document.getElementById('content').innerHTML = content;
-            }
-            /*.replace(/IMG/g,lines[count].image)
-            .replace(/NAME/g,lines[count].name)
-            .replace(/LINE/g,lineName)
-            .replace(/STATUS/g,data)
-            .replace(/COLOUR/g,colour)*/
     })
 });
