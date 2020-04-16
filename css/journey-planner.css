@@ -4,4 +4,25 @@
     background-color: white;
     overflow: auto;
     border-radius: 10px;
+    font-family: "Cairo", sans-serif;
+}
+
+.sorry {
+    display: block;
+    line-height: 20px;
+    color: red;
+    text-align: center;
+}
+
+.suggestTitle {
+    display: block;
+    line-height: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.suggestions {
+    display: block;
+    line-height: 25px;
+    margin-left: 10px;
 }

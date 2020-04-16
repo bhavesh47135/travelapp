@@ -21,13 +21,16 @@ fetch(query)
     resp.json().then(
         (text) => {
 
-            if (text.toLocationDisambiguation != undefined && text.fromLocationDisambiguation != undefined) {
+            if (text.toLocationDisambiguation.matchStatus != "identified" && 
+            text.fromLocationDisambiguation.matchStatus != "identified") {
                 
                 var template = "<div class='journey'>\n\
-                                    <span>Sorry, we couldn't find either of these locations. \n\
+                                    <span class='sorry'>Sorry, we couldn't find either of these locations. \n\
                                     Did you mean any of these?</span>\n\
-                                    <span style='border-bottom: 1px solid grey' class='suggestions'>STARTSUGGESTS</span>\n\
-                                    <span class='suggestions'>ENDSUGGESTS</span>\n\
+                                    <span class='suggestTitle'>Here are some suggestions for your starting location:</span>\n\
+                                    STARTSUGGESTS\n\
+                                    <span class='suggestTitle'>Here are some suggestions for your destination:</span>\n\
+                                    ENDSUGGESTS\n\
                                 </div>";
 
                 var startSuggestions = [];
@@ -39,54 +42,114 @@ fetch(query)
                 for (var i = 0; i < text.toLocationDisambiguation.disambiguationOptions.length; i++) {
                     endSuggestions[i] = text.toLocationDisambiguation.disambiguationOptions[i].place.commonName;
                 }
+                
+                var startOptions = [];
+                for (var i = 0; i < startSuggestions.length; i++) {
+                    startOptions[i] = ("<span class='suggestions'> • " + startSuggestions[i] + "</span>").toString();
+                    console.log(startOptions[i])
+                }
 
-                //var startOptions = "<span class='suggestions'>ENDSUGGESTS</span>";
+                var endOptions = [];
+                for (var i = 0; i < endSuggestions.length; i++) {
+                    endOptions[i] = ("<span class='suggestions'> • " + endSuggestions[i] + "</span>").toString();
+                    console.log(endOptions[i])
+                }
 
                 var entry = template.replace(/POS/g,(i+1))
-                .replace(/STARTSUGGESTS/g,startSuggestions)
-                .replace(/ENDSUGGESTS/g,endSuggestions)
+                .replace(/STARTSUGGESTS/g,startOptions.join(""))
+                .replace(/ENDSUGGESTS/g,endOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
                 content += entry;
                 document.getElementById('content').innerHTML = content;
 
             }
 
-            else if (text.fromLocationDisambiguation != undefined && text.toLocationDisambiguation == undefined) {
+            else if (text.fromLocationDisambiguation.matchStatus != "identified" && 
+            text.toLocationDisambiguation.matchStatus == "identified") {
 
-                var heading = "<span class='heading>Sorry, we couldn't find where you're departing from. \n\
-                                Did you mean any of these?</span>"
                 var template = "<div class='journey'>\n\
-                                    <span class='suggestions'>SUGGESTIONS</span>\n\
+                                    <span class='sorry'>Sorry, we couldn't find your starting location.</span>\n\
+                                    <span class='suggestTitle'>Here are some suggestions for your starting location:</span>\n\
+                                    SUGGESTIONS\n\
                                 </div>";
 
-                var suggestions = [];
+                var startSuggestions = [];
                 for (var i = 0; i < text.fromLocationDisambiguation.disambiguationOptions.length; i++) {
-                    suggestions[i] = text.fromLocationDisambiguation.disambiguationOptions[i].place.commonName;
+                    startSuggestions[i] = text.fromLocationDisambiguation.disambiguationOptions[i].place.commonName;
                 }
+                
+                var startOptions = [];
+                for (var i = 0; i < startSuggestions.length; i++) {
+                    startOptions[i] = ("<span class='suggestions'> • " + startSuggestions[i] + "</span>").toString();
+                    console.log(startOptions[i])
+                }
+
+                var entry = template.replace(/POS/g,(i+1))
+                .replace(/SUGGESTIONS/g,startOptions.join(""))
+                entry = entry.replace('<a href=\'http:///\'></a>','-');
+                content += entry;
+                document.getElementById('content').innerHTML = content;
 
             }
 
-            else if (text.toLocationDisambiguation != undefined && text.fromLocationDisambiguation == undefined) {
+            else if (text.fromLocationDisambiguation.matchStatus == "identified" && 
+            text.toLocationDisambiguation.matchStatus != "identified") {
 
-                var heading = "<span class='heading>Sorry, we couldn't find where you're headed to. \n\
-                                Did you mean any of these?</span>"
                 var template = "<div class='journey'>\n\
-                                    <span class='suggestions'>SUGGESTIONS</span>\n\
+                                    <span class='sorry'>Sorry, we couldn't find your destination.</span>\n\
+                                    <span class='suggestTitle'>Here are some suggestions for your destination:</span>\n\
+                                    SUGGESTIONS\n\
                                 </div>";
 
-                var suggestions = [];
+                var endSuggestions = [];
                 for (var i = 0; i < text.toLocationDisambiguation.disambiguationOptions.length; i++) {
-                    suggestions[i] = text.toLocationDisambiguation.disambiguationOptions[i].place.commonName;
+                    endSuggestions[i] = text.toLocationDisambiguation.disambiguationOptions[i].place.commonName;
                 }
+
+                var endOptions = [];
+                for (var i = 0; i < endSuggestions.length; i++) {
+                    endOptions[i] = ("<span class='suggestions'> • " + endSuggestions[i] + "</span>").toString();
+                    console.log(endOptions[i])
+                }
+
+                var entry = template.replace(/POS/g,(i+1))
+                .replace(/SUGGESTIONS/g,endOptions.join(""))
+                entry = entry.replace('<a href=\'http:///\'></a>','-');
+                content += entry;
+                document.getElementById('content').innerHTML = content;
 
             }
 
-            else if (text.toLocationDisambiguation != undefined) {
+            else if (text.fromLocationDisambiguation.matchStatus == "identified" && 
+            text.toLocationDisambiguation.matchStatus == "identified") {
+
                 var template = "<div class='journey>\n\
-                                    <img class='modeIcon' src='ICON' alt='NAME'>\n\
-                                    <span class='modeName'>NAME</span>\n\
-                                    <span class='modeInfo'>INFO</span>\n\
+                                    <div class='plan'>\n\
+                                        <img class='modeIcon' src='ICON' alt='NAME'>\n\
+                                        <span class='modeName'>NAME</span>\n\
+                                        <span class='modeInfo'>INFO</span>\n\
+                                    </div>\n\
                                 </div>";
+
+                var entry = template.replace(/POS/g,(i+1))
+                //.replace(/SUGGESTIONS/g,endOptions.join(""))
+                entry = entry.replace('<a href=\'http:///\'></a>','-');
+                content += entry;
+                document.getElementById('content').innerHTML = content;
+
+            }
+
+            else {
+                
+                var template = "<div class='journey>\n\
+                                    <span class='sorry'>Sorry, there was an error!</span>\n\
+                                </div>";
+
+                var entry = template.replace(/POS/g,(i+1))
+                entry = entry.replace('<a href=\'http:///\'></a>','-');
+                content += entry;
+                document.getElementById('content').innerHTML = content;
+
             }
     })
 });
