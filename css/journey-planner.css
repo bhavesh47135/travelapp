@@ -1,3 +1,9 @@
+body {
+	box-sizing : border-box;
+	-webkit-box-direction: normal;
+	display: block;
+}
+
 .results {
     width: 70vw;
     margin-left: 15vw;
@@ -25,4 +31,29 @@
     display: block;
     line-height: 25px;
     margin-left: 10px;
+}
+
+.journey {
+    margin-top: 5px;
+    width: 70vw;
+}
+
+.journeyPlan {
+    overflow: auto;
+    border-bottom: 1px solid grey;
+}
+
+.modeIcon {
+	display: block;
+	margin-left: 10px;
+	margin-right: 10px;
+    margin-top: 8px;
+    width: 37px;
+    height: auto;
+	float: left;
+	position: relative;
+}
+
+.modeInfo {
+    display: block;
 }

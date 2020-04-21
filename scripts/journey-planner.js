@@ -3,11 +3,18 @@ var content = "";
 var url = window.location.href;
 
 var a = (url.split('=')[1]).split('&')[0];
-if(a.includes("+")) var start = a.replace("+", " ");
+if (a.includes("+") && a.includes("%2C")) {
+    var start = ((a.replace("+", "%20")) && a.replace("%2C", "%2C%20")).toString();
+}
+else if(a.includes("+")) var start = a.replace("+", "%20");
 else var start = a;
 
 var b = url.split('=')[2];
-if(b.includes("+")) var end = b.replace("+", " ");
+if (b.includes("+") && b.includes("%2C")) {
+    var c = b.replace("%2C+", "%2C%20");
+    var end = c.replace("+", "%20");
+}
+else if(b.includes("+")) var end = b.replace("+", "%20");
 else var end = b;
 
 console.log(start);
@@ -21,7 +28,42 @@ fetch(query)
     resp.json().then(
         (text) => {
 
-            if (text.toLocationDisambiguation.matchStatus != "identified" && 
+            console.log(query);
+
+            if (text.fromLocationDisambiguation == undefined && 
+                text.toLocationDisambiguation == undefined) {
+
+                    var template = "<div class='journeyPlan'>\n\
+                                        <img class='modeIcon' src='ICON'>\n\
+                                        <span class='modeInfo'>INFO</span>\n\
+                                        <span class='modeInfo'>DURATION</span>\n\
+                                    </div>";
+                    
+                    var startTime = (text.journeys[0].startDateTime.split('T')[1]).substring(0, 5);
+                    var arrivalTime = (text.journeys[0].arrivalDateTime.split('T')[1]).substring(0, 5);
+
+                    for (var i = 0; i < text.journeys[0].legs.length; i++) {
+
+                        if (text.journeys[0].legs[i].mode.name == "walking") var icon = "walking.png";
+                        if (text.journeys[0].legs[i].mode.name == "tube") var icon = "tube.png";
+                        if (text.journeys[0].legs[i].mode.name == "bus") var icon = "bus.svg";
+
+                        var info = text.journeys[0].legs[i].instruction.summary;
+
+                        var duration = text.journeys[0].legs[i].duration + " minutes";
+
+                        var entry = template.replace(/POS/g,(i+1))
+                        .replace(/ICON/g,icon)
+                        .replace(/INFO/g,info)
+                        .replace(/DURATION/g,duration)
+                        entry = entry.replace('<a href=\'http:///\'></a>','-');
+                        content += entry;
+                        document.getElementById('content').innerHTML = content;
+                    }
+                    
+                }
+
+            else if (text.toLocationDisambiguation.matchStatus != "identified" && 
             text.fromLocationDisambiguation.matchStatus != "identified") {
                 
                 var template = "<div class='journey'>\n\
@@ -46,13 +88,11 @@ fetch(query)
                 var startOptions = [];
                 for (var i = 0; i < startSuggestions.length; i++) {
                     startOptions[i] = ("<span class='suggestions'> • " + startSuggestions[i] + "</span>").toString();
-                    console.log(startOptions[i])
                 }
 
                 var endOptions = [];
                 for (var i = 0; i < endSuggestions.length; i++) {
                     endOptions[i] = ("<span class='suggestions'> • " + endSuggestions[i] + "</span>").toString();
-                    console.log(endOptions[i])
                 }
 
                 var entry = template.replace(/POS/g,(i+1))
@@ -81,7 +121,6 @@ fetch(query)
                 var startOptions = [];
                 for (var i = 0; i < startSuggestions.length; i++) {
                     startOptions[i] = ("<span class='suggestions'> • " + startSuggestions[i] + "</span>").toString();
-                    console.log(startOptions[i])
                 }
 
                 var entry = template.replace(/POS/g,(i+1))
@@ -109,30 +148,10 @@ fetch(query)
                 var endOptions = [];
                 for (var i = 0; i < endSuggestions.length; i++) {
                     endOptions[i] = ("<span class='suggestions'> • " + endSuggestions[i] + "</span>").toString();
-                    console.log(endOptions[i])
                 }
 
                 var entry = template.replace(/POS/g,(i+1))
                 .replace(/SUGGESTIONS/g,endOptions.join(""))
-                entry = entry.replace('<a href=\'http:///\'></a>','-');
-                content += entry;
-                document.getElementById('content').innerHTML = content;
-
-            }
-
-            else if (text.fromLocationDisambiguation.matchStatus == "identified" && 
-            text.toLocationDisambiguation.matchStatus == "identified") {
-
-                var template = "<div class='journey>\n\
-                                    <div class='plan'>\n\
-                                        <img class='modeIcon' src='ICON' alt='NAME'>\n\
-                                        <span class='modeName'>NAME</span>\n\
-                                        <span class='modeInfo'>INFO</span>\n\
-                                    </div>\n\
-                                </div>";
-
-                var entry = template.replace(/POS/g,(i+1))
-                //.replace(/SUGGESTIONS/g,endOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
                 content += entry;
                 document.getElementById('content').innerHTML = content;
@@ -151,5 +170,6 @@ fetch(query)
                 document.getElementById('content').innerHTML = content;
 
             }
-    })
+        }
+    )
 });
