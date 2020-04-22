@@ -1,0 +1,30 @@
+.coverImg {
+    width: 80vw;
+    height: auto;
+    border-radius: 10px;
+    margin-left: 10vw;
+}
+
+.header {
+    text-align: center;
+    font-size: 10vw;
+    color: white;
+    font-family: "Cairo", sans-serif;
+    margin-bottom: 5px;
+}
+
+.text {
+    text-align: center;
+    color: white;
+    width: 90vw;
+    overflow: auto;
+    margin-left: 5vw;
+    margin-top: 15px;
+}
+
+.butt {
+    text-align: center;
+    font-size: 4vw;
+    width: 43vw;
+    margin-left: 28.5vw;
+}

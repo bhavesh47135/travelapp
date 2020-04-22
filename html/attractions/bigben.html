@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title> TourIt </title>
+        <meta charset="UTF-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, 
+            maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <meta name="description" content="Find directions to anywhere in London and discover some of what London has to offer!">
+        <meta name="theme-color" content="#37ab2e">
+        <link rel="stylesheet" type="text/css" href="/styles.css">
+        <link rel="stylesheet" type="text/css" href="/attraction.css">
+        <link rel="stylesheet" type="text/css" href="/button.css">
+        <link rel="manifest" href="/travelapp.webmanifest">
+        <link rel="apple-touch-icon" href="/logo.jpg">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+
+    <body>
+
+        <div class="top">
+            <img class="nav-icon" src="backicon.png" alt="Back" width="10%" height="auto" onclick="history.back()">
+            <span class="logo" onclick="javascript:location.href='home'">TourIT</span>
+            <img class="nav-icon" src="forwardicon.png" alt="Forward" width="10%" height="auto" onclick="history.forward()">
+        </div>
+
+        <div class="wrapper"></div>
+
+        <img class="coverImg" src="bigben2.jpg">
+
+        <div class="header">
+            <span>Big Ben</span>
+        </div>
+
+        <div class="butt">
+        <a href="/journey-planner?start=&end=SW1A%200AA" class="btn">Get Directions</a>
+        </div>
+
+        <div class="text">
+            <span>
+                Big Ben is the nickname for the Great Bell of the striking clock at the north end of the Palace of 
+                Westminster in London and is usually extended to refer to both the clock and the clock tower. The official name 
+                of the tower in which Big Ben is located was originally the Clock Tower, but it was renamed Elizabeth Tower in 2012 
+                to mark the Diamond Jubilee of Elizabeth II. The tower was designed by Augustus Pugin in a neo-Gothic style. When 
+                completed in 1859, its clock was the largest and most accurate four-faced striking and chiming clock in the world. 
+                The tower stands 315 feet (96 m) tall, and the climb from ground level to the belfry is 334 steps. Its base is square, 
+                measuring 39 feet (12 m) on each side. Dials of the clock are 23 feet (7.0 m) in diameter. On 31 May 2009, celebrations 
+                were held to mark the tower's 150th anniversary.
+            </span>
+        </div>
+
+        <p>Click the button to get your coordinates.</p>
+
+        <button onclick="getLocation()">Try It</button>
+
+        <p id="demo"></p>
+
+        <div class="bottom"></div>
+
+        <script>
+            var x = document.getElementById("demo");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude + 
+                "<br>Longitude: " + position.coords.longitude;
+            }
+
+        </script>
+
+    </body>
+
+</html>

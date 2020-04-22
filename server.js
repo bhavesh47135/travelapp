@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
-const _ = require('underscore'); // All Dependencies
+const bodyParser = require("body-parser"); // All Dependencies
 
 app.set('port', process.env.PORT || 3000); // Port that the app will be accessed on
 
@@ -31,8 +30,6 @@ app.get('/home',function(req,res){
 app.get('/home.html',function(req,res){
     res.sendFile(__dirname+'/html/home.html');
 });
-
-//app.get(/)
 
 app.get('/journey-planner', function(req,res){
     var start = req.body.start;
@@ -101,5 +98,9 @@ app.get('/maps-night-tube-map',function(req,res){
 });
 
 app.get('/more-attractions',function(req,res){
-    res.sendFile(__dirname+'/html/attractions.html');
+    res.sendFile(__dirname+'/html/attractions/attractions.html');
+});
+
+app.get('/big-ben',function(req,res){
+    res.sendFile(__dirname+'/html/attractions/bigben.html');
 });

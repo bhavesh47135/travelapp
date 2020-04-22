@@ -45,8 +45,11 @@ fetch(query)
                     for (var i = 0; i < text.journeys[0].legs.length; i++) {
 
                         if (text.journeys[0].legs[i].mode.name == "walking") var icon = "walking.png";
-                        if (text.journeys[0].legs[i].mode.name == "tube") var icon = "tube.png";
-                        if (text.journeys[0].legs[i].mode.name == "bus") var icon = "bus.svg";
+                        else if (text.journeys[0].legs[i].mode.name == "tube") var icon = "tube.png";
+                        else if (text.journeys[0].legs[i].mode.name == "overground") var icon = "tube.png";
+                        else if (text.journeys[0].legs[i].mode.name == "bus") var icon = "bus.svg";
+                        else if (text.journeys[0].legs[i].mode.name == "bus") var icon = "train.webp";
+                        else if (text.journeys[0].legs[i].mode.name == "replacement-bus") var icon = "bus.svg";
 
                         var info = text.journeys[0].legs[i].instruction.summary;
 
