@@ -16,12 +16,20 @@ var lines = [
         name: "District"
     },
     {
+        image: "dlr.jpg",
+        name: "DLR"
+    },
+    {
         image: "hammersmith-cityicon.jpg",
         name: "Hammersmith & City"
     },
     {
         image: "jubileeicon.jpg",
         name: "Jubilee"
+    },
+    {
+        image: "overground.jpg",
+        name: "Overground"
     },
     {
         image: "metropolitanicon.jpg",
@@ -59,7 +67,8 @@ var count = -1;
 
 for (var i = 0; i < lines.length; i++) {
     
-    fetch("https://api.tfl.gov.uk/Line/Mode/tube/Status?detail=true&app_key=211467e7a16e5bd534b224588de3b02e&app_id=2bd766c8")
+    //fetch("https://api.tfl.gov.uk/Line/Mode/tube/Status?detail=true&app_key=211467e7a16e5bd534b224588de3b02e&app_id=2bd766c8")
+    fetch("https://api.tfl.gov.uk/Line/Mode/tube%2Cdlr%2Coverground/Status?detail=false&app_id=2bd766c8&app_key=211467e7a16e5bd534b224588de3b02e%09")
     .then((resp) => {
         resp.json().then(
             (text) => {

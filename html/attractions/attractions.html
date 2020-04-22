@@ -5,12 +5,14 @@
     <head>
         <title> TourIt </title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, 
+            maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
         <meta name="description" content="Find directions to anywhere in London and discover some of what London has to offer!">
-        <meta name="theme-color" content="#3bb54a">
-        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <meta name="theme-color" content="#37ab2e">
         <link rel="stylesheet" type="text/css" href="/styles.css">
+        <link rel="stylesheet" type="text/css" href="/more-attractions.css">
         <link rel="manifest" href="/travelapp.webmanifest">
         <link rel="apple-touch-icon" href="/logo.jpg">
         <link rel="shortcut icon" href="/favicon.ico">
@@ -18,12 +20,20 @@
 
     <body>
 
+        <div class="top">
+            <img class="nav-icon" src="backicon.png" alt="Back" width="10%" height="auto" onclick="history.back()">
+            <span class="logo" onclick="javascript:location.href='home'">TourIT</span>
+            <img class="nav-icon" src="forwardicon.png" alt="Forward" width="10%" height="auto" onclick="history.forward()">
+        </div>
+
+        <div class="wrapper"></div>
+
         <div class="attractions-list">
             <h1>Attractions</h1>
             <section id="content"></section>
         </div>
-        
-        <img class="skyline" src="skyline.png" alt="TourIt!" width="100%" height="auto">
+
+        <div class="bottom"></div>
 
         <script src="attractions.js"></script>
 

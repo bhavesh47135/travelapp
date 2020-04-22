@@ -1,21 +1,36 @@
+function keepForm() {
+
+    if (start != undefined && end != undefined) {
+
+        var startInput = start;
+        var endInput = end;
+
+        startInput = startInput.replace(/[\/\\+]/g, " ");
+        endInput = endInput.replace(/[\/\\+]/g, " ");
+
+        startInput = startInput.replace(/%20/g, " ");
+        endInput = endInput.replace(/%20/g, " ");
+
+        startInput = startInput.replace(/%2C/g, ",");
+        endInput = endInput.replace(/%2C/g, ",");
+
+        //startInput = startInput.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g," ");
+        //endInput = endInput.replace(/[&\/\\#+()$~%.'":*?<>{}]/g," ");
+        
+        document.getElementsByName('start')[0].value = startInput;
+        document.getElementsByName('end')[0].value = endInput;
+    }
+}
+
 var content = "";
 
 var url = window.location.href;
 
-var a = (url.split('=')[1]).split('&')[0];
-if (a.includes("+") && a.includes("%2C")) {
-    var start = ((a.replace("+", "%20")) && a.replace("%2C", "%2C%20")).toString();
-}
-else if(a.includes("+")) var start = a.replace("+", "%20");
-else var start = a;
+var start = (url.split('=')[1]).split('&')[0];
+start = start.replace(/[\/\\+]/g, "%20");
 
-var b = url.split('=')[2];
-if (b.includes("+") && b.includes("%2C")) {
-    var c = b.replace("%2C+", "%2C%20");
-    var end = c.replace("+", "%20");
-}
-else if(b.includes("+")) var end = b.replace("+", "%20");
-else var end = b;
+var end = url.split('=')[2];
+end = end.replace(/[\/\\+]/g, "%20");
 
 console.log(start);
 console.log(end);

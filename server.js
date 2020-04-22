@@ -12,6 +12,7 @@ app.use(express.static("css"));
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Origin", "http://cloud.tfl.gov.uk/");
+    res.header("Access-Control-Allow-Origin", "https//api.tfl.gov.uk/");
     next();
 });
 
@@ -101,6 +102,18 @@ app.get('/more-attractions',function(req,res){
     res.sendFile(__dirname+'/html/attractions/attractions.html');
 });
 
+app.get('/london-eye',function(req,res){
+    res.sendFile(__dirname+'/html/attractions/london-eye.html');
+});
+
 app.get('/big-ben',function(req,res){
     res.sendFile(__dirname+'/html/attractions/bigben.html');
+});
+
+app.get('/buckingham-palace',function(req,res){
+    res.sendFile(__dirname+'/html/attractions/buckingham-palace.html');
+});
+
+app.get('/the-shard',function(req,res){
+    res.sendFile(__dirname+'/html/attractions/shard.html');
 });

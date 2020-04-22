@@ -12,13 +12,14 @@
         <meta name="description" content="Find directions to anywhere in London and discover some of what London has to offer!">
         <meta name="theme-color" content="#37ab2e">
         <link rel="stylesheet" type="text/css" href="/styles.css">
-        <link rel="stylesheet" type="text/css" href="/journey-planner.css">
+        <link rel="stylesheet" type="text/css" href="/attraction.css">
+        <link rel="stylesheet" type="text/css" href="/button.css">
         <link rel="manifest" href="/travelapp.webmanifest">
         <link rel="apple-touch-icon" href="/logo.jpg">
         <link rel="shortcut icon" href="/favicon.ico">
     </head>
 
-    <body onload="keepForm()">
+    <body>
 
         <div class="top">
             <img class="nav-icon" src="backicon.png" alt="Back" width="10%" height="auto" onclick="history.back()">
@@ -28,27 +29,31 @@
 
         <div class="wrapper"></div>
 
-        <div class="journeyPlanner">
+        <img class="coverImg" src="londoneye2.jpg">
 
-            <div class="boxtitle">
-                <span>JOURNEY PLANNER</span>
-            </div>
-
-            <form class="journeyForm" action="/journey-planner" method="GET">
-                <input required type="text" name="start" placeholder="From">
-                <input required type="text" name="end" placeholder="To">
-                <input type="submit" value="Search">
-            </form>
-            
+        <div class="header">
+            <span>London Eye</span>
         </div>
-        
-        <div class="results">
-            <div id="content"></div>
+
+        <div class="butt">
+            <a href="/journey-planner?start=&end=SE1 7PB" class="btn">Get Directions</a>
+        </div> <br>
+
+        <div class="butt">
+            <a href="https://www.londoneye.com/tickets-and-prices/" class="btn">Buy Tickets</a>
+        </div>
+
+        <div class="text">
+            <span>
+                The London Eye, or the Millennium Wheel, is a cantilevered observation wheel on the South Bank of the River Thames 
+                in London. It is Europe's tallest cantilevered observation wheel, and is the most popular paid tourist attraction 
+                in the United Kingdom with over 3.75 million visitors annually, and has made many appearances in popular culture.
+                The London Eye used to offer the highest public viewing point in London until it was superseded by the 245-metre-high 
+                (804 ft) observation deck on the 72nd floor of The Shard, which opened to the public on 1 February 2013.
+            </span>
         </div>
 
         <div class="bottom"></div>
-
-        <script type="text/javascript" src="journey-planner.js"></script>
 
     </body>
 

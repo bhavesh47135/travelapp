@@ -8,7 +8,7 @@ body {
 	font-family: "Cairo", sans-serif;
 	margin-bottom: 20px;
 	margin-left: 15vw;
-	height: 630px;
+	overflow: auto;
 	width: 70vw;
 }
 
@@ -16,7 +16,7 @@ body {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	background-color: white;
-	height: 595px;
+	overflow: auto;
 }
 
 .trainLines {
@@ -84,7 +84,7 @@ body {
 
 .attractions {
 	width: 70vw;
-	height: 265px;
+	overflow: auto;
 	margin-left: 15vw;
 	font-family: "Cairo", sans-serif;
 	margin-top: 60px;
