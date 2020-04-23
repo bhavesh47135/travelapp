@@ -1,0 +1,27 @@
+.attractions-list {
+    width: 80vw;
+    overflow: auto;
+    margin-left: 10vw;
+    margin-top: -40px;
+    text-align: center;
+    font-family: "Cairo", sans-serif;
+}
+
+.attractionsList {
+    margin-top: 40px;
+}
+
+.attractionImg {
+    width: 80vw;
+    height: auto;
+    filter: blur(0em);
+	transition: filter 0.5s;
+}
+
+.attractionImg[data-src] {
+	filter: blur(0.2em);
+}
+
+.attractionText {
+    display: block;
+}

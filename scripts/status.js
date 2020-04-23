@@ -10,9 +10,27 @@ var content = "";
 
 var count = -1;
 
+var url = window.location.href;
+
+if (url.includes("Bakerloo")) var lineName = "bakerloo";
+else if (url.includes("Central")) var lineName = "central";
+else if (url.includes("Circle")) var lineName = "circle";
+else if (url.includes("District")) var lineName = "district";
+else if (url.includes("DLR")) var lineName = "dlr";
+else if (url.includes("Hammersmith-City")) var lineName = "hammersmith-city";
+else if (url.includes("Jubilee")) var lineName = "jubilee";
+else if (url.includes("Overground")) var lineName = "/Mode/overground";
+else if (url.includes("Metropolitan")) var lineName = "metropolitan";
+else if (url.includes("Northern")) var lineName = "northern";
+else if (url.includes("Piccadilly")) var lineName = "piccadilly";
+else if (url.includes("Victoria")) var lineName = "victoria";
+else if (url.includes("Waterloo-City")) var lineName = "waterloo-city";
+
+var query = "https://api.tfl.gov.uk/Line/" + lineName + "/Status?detail=true&app_id=2bd766c8&app_key=211467e7a16e5bd534b224588de3b02e";
+
 for (var i = 0; i < 1; i++) {
     
-    fetch("https://api.tfl.gov.uk/Line/piccadilly/Status?detail=true&app_id=2bd766c8&app_key=211467e7a16e5bd534b224588de3b02e")
+    fetch(query)
     .then((resp) => {
         resp.json().then(
             (text) => {
@@ -76,7 +94,6 @@ for (var i = 0; i < 1; i++) {
                 if (statuses[1] != undefined) var statusTitle = (statuses[0] + ", " + statuses[1]).toString();
 
                 var details = statusDetails.toString();
-                console.log(icon);
 
                 var entry = template.replace(/POS/g,(i+1))
                 .replace(/ICON/g,icon)

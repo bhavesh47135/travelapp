@@ -105,7 +105,7 @@ for (var i = 0; i < lines.length; i++) {
                 if ((lines[count].name.includes("&")) == false) var lineName = lines[count].name;
                 if ((lines[count].name.includes("&")) == true) var lineName = lines[count].name.replace(" & ", "-");
 
-                var entry = template.replace(/POS/g,(i+1))
+                var entry = template
                 .replace(/IMG/g,lines[count].image)
                 .replace(/NAME/g,lines[count].name)
                 .replace(/LINE/g,lineName)

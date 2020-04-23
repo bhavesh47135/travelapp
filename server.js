@@ -39,51 +39,55 @@ app.get('/journey-planner', function(req,res){
 });
 
 app.get('/Bakerloo-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/bakerlooStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Central-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/centralStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Circle-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/circleStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/District-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/districtStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
+});
+
+app.get('/DLR-status',function(req,res){
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Hammersmith-City-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/hammersmithStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Jubilee-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/jubileeStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
+});
+
+app.get('/Overground-status',function(req,res){
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Metropolitan-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/metropolitanStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Northern-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/northernStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Piccadilly-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/piccadillyStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Victoria-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/victoriaStatus.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/Waterloo-city-status',function(req,res){
-    res.sendFile(__dirname+'/html/status/waterlooStatus.html');
-});
-
-app.get('/more-lines',function(req,res){
-    res.sendFile(__dirname+'/html/moreLines.html');
+    res.sendFile(__dirname+'/html/status.html');
 });
 
 app.get('/maps-tube-map',function(req,res){
@@ -116,4 +120,16 @@ app.get('/buckingham-palace',function(req,res){
 
 app.get('/the-shard',function(req,res){
     res.sendFile(__dirname+'/html/attractions/shard.html');
+});
+
+app.get('/harrods',function(req,res){
+    res.sendFile(__dirname+'/html/attractions/harrods.html');
+});
+
+app.get('/selfridges',function(req,res){
+    res.sendFile(__dirname+'/html/attractions/selfridges.html');
+});
+
+app.get('/madame-tussauds',function(req,res){
+    res.sendFile(__dirname+'/html/attractions/madame-tussauds.html');
 });
