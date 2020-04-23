@@ -22,6 +22,28 @@ function keepForm() {
     }
 }
 
+var option1 = document.getElementById("option1");
+var option2 = document.getElementById("option2");
+var option3 = document.getElementById("option3");
+
+function firstOption() {
+    option1.style.display = "block";
+    option2.style.display = "none";
+    option3.style.display = "none";
+}
+
+function secondOption() {
+    option1.style.display = "none";
+    option2.style.display = "block";
+    option3.style.display = "none";
+}
+
+function thirdOption() {
+    option1.style.display = "none";
+    option2.style.display = "none";
+    option3.style.display = "block";
+}
+
 var content = "";
 
 var url = window.location.href;
@@ -54,31 +76,36 @@ fetch(query)
                                         <span class='modeInfo'>DURATION</span>\n\
                                     </div>";
                     
-                    var startTime = (text.journeys[0].startDateTime.split('T')[1]).substring(0, 5);
-                    var arrivalTime = (text.journeys[0].arrivalDateTime.split('T')[1]).substring(0, 5);
+                    //var startTime = (text.journeys[0].startDateTime.split('T')[1]).substring(0, 5);
+                    //var arrivalTime = (text.journeys[0].arrivalDateTime.split('T')[1]).substring(0, 5);
 
-                    for (var i = 0; i < text.journeys[0].legs.length; i++) {
+                    for (var x = 0; x < text.journeys.length; x++) {
 
-                        if (text.journeys[0].legs[i].mode.name == "walking") var icon = "walking.png";
-                        else if (text.journeys[0].legs[i].mode.name == "tube") var icon = "tube.png";
-                        else if (text.journeys[0].legs[i].mode.name == "overground") var icon = "tube.png";
-                        else if (text.journeys[0].legs[i].mode.name == "bus") var icon = "bus.svg";
-                        else if (text.journeys[0].legs[i].mode.name == "bus") var icon = "train.webp";
-                        else if (text.journeys[0].legs[i].mode.name == "replacement-bus") var icon = "bus.svg";
+                        content = "";
 
-                        var info = text.journeys[0].legs[i].instruction.summary;
+                        for (var i = 0; i < text.journeys[x].legs.length; i++) {
 
-                        var duration = text.journeys[0].legs[i].duration + " minutes";
+                            if (text.journeys[x].legs[i].mode.name == "walking") var icon = "walking.png";
+                            else if (text.journeys[x].legs[i].mode.name == "tube") var icon = "tube.png";
+                            else if (text.journeys[x].legs[i].mode.name == "overground") var icon = "tube.png";
+                            else if (text.journeys[x].legs[i].mode.name == "bus") var icon = "bus.svg";
+                            else if (text.journeys[x].legs[i].mode.name == "bus") var icon = "train.webp";
+                            else if (text.journeys[x].legs[i].mode.name == "replacement-bus") var icon = "bus.svg";
 
-                        var entry = template.replace(/POS/g,(i+1))
-                        .replace(/ICON/g,icon)
-                        .replace(/INFO/g,info)
-                        .replace(/DURATION/g,duration)
-                        entry = entry.replace('<a href=\'http:///\'></a>','-');
-                        content += entry;
-                        document.getElementById('content').innerHTML = content;
+                            var info = text.journeys[x].legs[i].instruction.summary;
+
+                            var duration = text.journeys[x].legs[i].duration + " minutes";
+
+                            var entry = template.replace(/POS/g,(i+1))
+                            .replace(/ICON/g,icon)
+                            .replace(/INFO/g,info)
+                            .replace(/DURATION/g,duration)
+                            entry = entry.replace('<a href=\'http:///\'></a>','-');
+                            content += entry;
+                            
+                        }
+                        document.getElementById("option" + (x+1)).innerHTML = content;
                     }
-                    
                 }
 
             else if (text.toLocationDisambiguation.matchStatus != "identified" && 

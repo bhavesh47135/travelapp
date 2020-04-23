@@ -39,6 +39,7 @@ body {
 .lineInfo {
 	text-align: left;
 	padding-top: 10px;
+	font-size: 4vw;
 }
 
 .lineName {
