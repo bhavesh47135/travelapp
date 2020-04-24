@@ -16,6 +16,7 @@
         <link rel="manifest" href="/travelapp.webmanifest">
         <link rel="apple-touch-icon" href="/logo.jpg">
         <link rel="shortcut icon" href="/favicon.ico">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -30,7 +31,14 @@
         
         <div id="content"></div>
 
-        <div class="lineMap"></div>
+        <div id="lineMap"></div>
+
+        <div id="zoomImg" class="zoomedImg">
+            <span class="close">&times;</span>
+            <img class="new-image" id="newImg">
+        </div>
+
+        <div class="bottom"></div>
 
         <script type="text/javascript" src="/status.js"></script>
 
