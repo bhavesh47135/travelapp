@@ -96,7 +96,7 @@ fetch(query)
 
                             var duration = text.journeys[x].legs[i].duration + " minutes";
 
-                            var entry = template.replace(/POS/g,(i+1))
+                            var entry = template
                             .replace(/ICON/g,icon)
                             .replace(/INFO/g,info)
                             .replace(/DURATION/g,duration)
@@ -140,7 +140,7 @@ fetch(query)
                     endOptions[i] = ("<span class='suggestions'> • " + endSuggestions[i] + "</span>").toString();
                 }
 
-                var entry = template.replace(/POS/g,(i+1))
+                var entry = template
                 .replace(/STARTSUGGESTS/g,startOptions.join(""))
                 .replace(/ENDSUGGESTS/g,endOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
@@ -168,8 +168,7 @@ fetch(query)
                     startOptions[i] = ("<span class='suggestions'> • " + startSuggestions[i] + "</span>").toString();
                 }
 
-                var entry = template.replace(/POS/g,(i+1))
-                .replace(/SUGGESTIONS/g,startOptions.join(""))
+                var entry = template.replace(/SUGGESTIONS/g,startOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
                 content += entry;
                 document.getElementById('content').innerHTML = content;
@@ -195,8 +194,7 @@ fetch(query)
                     endOptions[i] = ("<span class='suggestions'> • " + endSuggestions[i] + "</span>").toString();
                 }
 
-                var entry = template.replace(/POS/g,(i+1))
-                .replace(/SUGGESTIONS/g,endOptions.join(""))
+                var entry = template.replace(/SUGGESTIONS/g,endOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
                 content += entry;
                 document.getElementById('content').innerHTML = content;
@@ -208,11 +206,8 @@ fetch(query)
                 var template = "<div class='journey>\n\
                                     <span class='sorry'>Sorry, there was an error!</span>\n\
                                 </div>";
-
-                var entry = template.replace(/POS/g,(i+1))
-                entry = entry.replace('<a href=\'http:///\'></a>','-');
-                content += entry;
-                document.getElementById('content').innerHTML = content;
+                                
+                document.getElementById('content').innerHTML = template;
 
             }
         }
