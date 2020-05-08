@@ -145,7 +145,7 @@ fetch(query)
                 .replace(/ENDSUGGESTS/g,endOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
                 content += entry;
-                document.getElementById('content').innerHTML = content;
+                document.getElementById('option1').innerHTML = content;
 
             }
 
@@ -171,7 +171,7 @@ fetch(query)
                 var entry = template.replace(/SUGGESTIONS/g,startOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
                 content += entry;
-                document.getElementById('content').innerHTML = content;
+                document.getElementById('option1').innerHTML = content;
 
             }
 
@@ -197,7 +197,7 @@ fetch(query)
                 var entry = template.replace(/SUGGESTIONS/g,endOptions.join(""))
                 entry = entry.replace('<a href=\'http:///\'></a>','-');
                 content += entry;
-                document.getElementById('content').innerHTML = content;
+                document.getElementById('option1').innerHTML = content;
 
             }
 
@@ -207,7 +207,7 @@ fetch(query)
                                     <span class='sorry'>Sorry, there was an error!</span>\n\
                                 </div>";
                                 
-                document.getElementById('content').innerHTML = template;
+                document.getElementById('option1').innerHTML = template;
 
             }
         }
